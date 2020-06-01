@@ -41,19 +41,19 @@ Doubtnut
     - doubt_body
 
 2. **Results are generated**
-    from the catalog_questions table and shown to the user as a list and following things are passed as parameters in               generated list's xpath:        
+     from the catalog_questions table and shown to the user as a list and following things are passed as parameters in               generated list's xpath:        
     - user_id
     - doubt_id
     
-3. **When user clicks on any video, API is called**
-    That API has following components:
+3. **When user clicks on any video, API is called.**
+     That API has following components:
     - it accepts user_id, doubt_id from parameters
     - it accepts question JSON
     - then it querries in pdf_user table and checks if the user_id already exists in table or not
     - if user_id exists then it updates doubt_id, question_json, timestamp
     - else it inserts the new entry with user_id, doubt_id, question_json, timestamp
  4. **Now we schedule a cronjob**
-    which works every 1 minute and logs in a file for which we do the following:      
+     which works every 1 minute and logs in a file for which we do the following:      
     - We take list of entries in pdf_user made between (current time - 5minutes) and (current time - 10 minutes).
     - We get list of user_ids and doubts ids whose entries where made in that time frame.
     - Now we querry again with those user ids in between current time and (current time - 5minutes).
@@ -65,45 +65,16 @@ Doubtnut
     - Now, We assign an unique name to pdf by uuid, add s3 link to it and upload it to S3 bucket.
     - Now we make an entry in pdf_record table with pdf's s3 link, doubt_id, timestamp.
     
-### Users
-
-1. **create users** 
-    this will create a new user with a random username
-
-### Posts
-
-1. **create post**
-    this will create a new post, required fields are 
-    - username (the author of this post)
-    - title
-    - body 
-
-2. **show all posts**
-    list all existing posts, we should have following filtering support
-
-    - filter by username
-    - filter by query contained in title (search by title)
-
-3. **edit posts** `TBD`
-
-4. **delete posts** `TBD` 
-
-### Comments 
-
-1. **show all comments (of a user)**
-
-2. **show all comments (under a post)**
-
-3. **add a comment**
-
 
 ## API Documentation 
 
-### `users` 
+### `upload` 
 
-1. `POST /users` 
+1. `POST /?user_id=user_id&doubt_id=doubt_id` 
 
-Creates a new user with random username and an user id
+```json
+ application/json - [{"class":11,"question_text":"What is photosynthesis?","solution_text":"The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."}]
+```
 
 2. `GET /users/{userid}`
 
