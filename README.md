@@ -54,17 +54,57 @@ Doubtnut
     └── session_inactivity.py          # checks for session inactivity 
    
 ```
+### Mongo database collection Schemas
+#### pdf_user
+
+```
+concepts_schema = {
+
+    'user_id': {
+        'type': 'integer',
+        'required': True,
+    },
+
+    'doubt_id': {
+        'type': 'sinteger',
+        'required': True,
+    },
+
+    'question_json': {
+        'type': 'json',
+        'required': True,
+    },
+
+    'timestamp': {
+        'type': 'datetime',
+        'required': True,
+    },
+
+    'document_references': {
+        'type': 'list',
+        'schema': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'pdf_user',
+                'field': '_id',
+                'embeddable': True,
+            },
+        },
+    },
+}
+```
+
 
 ##  Logic and Assumptions
 
 1. **When a user asks a question**
-     an entry is created in user_asked_question table with following:
+     an entry is created in user_asked_question collection with following:
     - user_id
     - doubt_id
     - doubt_body
 
 2. **Results are generated**
-     from the catalog_questions table and shown to the user as a list and following things are passed as parameters in               generated list's xpath:        
+     from the catalog_questions collection and shown to the user as a list and following things are passed as parameters in               generated list's xpath:        
     - user_id
     - doubt_id
     
@@ -72,7 +112,7 @@ Doubtnut
      That API has following components:
     - it accepts user_id, doubt_id from parameters
     - it accepts question JSON
-    - then it querries in pdf_user table and checks if the user_id already exists in table or not
+    - then it querries in pdf_user collection and checks if the user_id already exists in collection or not
     - if user_id exists then it updates doubt_id, question_json, timestamp
     - else it inserts the new entry with user_id, doubt_id, question_json, timestamp
  4. **Now we schedule a cronjob**
@@ -83,10 +123,11 @@ Doubtnut
     - Now we get list of user_ids who were active in this time frame.
     - We now, find the corresponding doubt_id with user_id which was not active.
     - Thus, we get doubt_ids which are most recent,inactive since 5 minutes and the user which is too inactive.
-    - Now we querry in pdf_user table with those doubts_ids for getting question_json.
+    - Now we querry in pdf_user collection with those doubts_ids for getting question_json.
     - We first convert those question_json to pdf.
     - Now, We assign an unique name to pdf by uuid, add s3 link to it and upload it to S3 bucket.
-    - Now we make an entry in pdf_record table with pdf's s3 link, doubt_id, timestamp.
+    - Now we make an entry in pdf_record collection
+    with pdf's s3 link, doubt_id, timestamp.
     
 
 ## API Documentation 
