@@ -1,18 +1,6 @@
 # doubtnut_assignment
 
 
-## Database Setup
-
-```shell
- Create 2 new databases in Mongodb
-```
-
-```Mongodb
-Create database pdf_user
-
-Create database pdf_record
-
-```
 ## Quickstart
 
 To work in a sandboxed Python environment we recommend installing the app in a Python [virtualenv](https://pypi.python.org/pypi/virtualenv).
