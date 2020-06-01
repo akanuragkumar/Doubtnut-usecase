@@ -4,13 +4,13 @@
 ## Database Setup
 
 ```shell
- create 2 new databases in Mongodb
+ Create 2 new databases in Mongodb
 ```
 
 ```Mongodb
-create database pdf_user
+Create database pdf_user
 
-create database pdf_record
+Create database pdf_record
 
 ```
 
@@ -32,8 +32,39 @@ Doubtnut
    
 ```
 
-##  Logic 
+##  Logic and Assumptions
 
+1. **User asks a question**
+    When a user asks a question an entry is created in user_asked_question table with following:
+    - user_id
+    - doubt_id
+    - doubt_body
+
+2. **Results are generated**
+    Based on this, a set of results is generated from the catalog_questions table and shown to the user as a list and             following things are passed as parameters in generated list's xpath:      
+    - user_id
+    - doubt_id
+    
+3. **When user clicks on any video, API is called**
+    When a student views a video from the above list, an API is called.That API has following components:
+    - it accepts user_id, doubt_id from parameters
+    - it accepts question JSON
+    - then it querries in pdf_user table and checks if the user_id already exists in table or not
+    - if user_id exists then it updates doubt_id, question_json, timestamp
+    - else it inserts the new entry with user_id, doubt_id, question_json, timestamp
+ 2. **Cronjob scheduling**
+    Now we schedule a cronjob which works every 1 minute and logs in a file for which we do the following:      
+    - We take list of entries in pdf_user made between (current time - 5minutes) and (current time - 10 minutes).
+    - We get list of user_ids and doubts ids whose entries where made in that time frame.
+    - Now we querry again with those user ids in between current time and (current time - 5minutes).
+    - Now we get list of user_ids who were active in this time frame.
+    - We now, find the corresponding doubt_id with user_id which was not active.
+    - Thus, we get doubt_ids which are most recent,inactive since 5 minutes and the user which is too inactive.
+    - Now we querry in pdf_user table with those doubts_ids for getting question_json.
+    - We first convert those question_json to pdf.
+    - Now, We assign an unique name to pdf by uuid, add s3 link to it and upload it to S3 bucket.
+    - Now we make an entry in pdf_record table with pdf's s3 link, doubt_id, timestamp.
+    
 ### Users
 
 1. **create users** 
