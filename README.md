@@ -8,7 +8,7 @@ To work in a sandboxed Python environment we recommend installing the app in a P
 1. Install dependencies
 
     ```bash
-    $ cd /path/to/doubnut
+    $ cd /path/to/hiring_assignment
     $ pip install -r requirements.txt
     ```
 
@@ -41,7 +41,7 @@ Create database pdf_record
 
 ### Backend 
 ```shell
-Doubtnut
+Hiring_assignment
 ├── app                                # contains application files
 │   ├── task──────┐                    # contains resource files for API
 │   └── runserver │                    # serves API and manages the requests
