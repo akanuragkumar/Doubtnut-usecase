@@ -4,7 +4,7 @@
 
 ## Quickstart
 
-To work in a sandboxed Python environment its recommended to install the app in a Python [virtualenv](https://pypi.python.org/pypi/virtualenv).
+To work in a sandboxed Python environment it is recommended to install the app in a Python [virtualenv](https://pypi.python.org/pypi/virtualenv).
 
 1. Install dependencies
 
