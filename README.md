@@ -4,13 +4,13 @@
 ## Database Setup
 
 ```shell
-$ create a new DB in Mongodb
+ create 2 new databases in Mongodb
 ```
 
 ```Mongodb
-create database pdf_user;
+create database pdf_user
 
-create database pdf_record;
+create database pdf_record
 
 ```
 
