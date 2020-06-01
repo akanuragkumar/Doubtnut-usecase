@@ -25,7 +25,7 @@ Create database pdf_record
 1. Run server
 
    ```bash
-   $ python app.runser.py
+   $ python app/runserver.py
    ```
 
    View at http://127.0.0.1:5000
