@@ -58,7 +58,7 @@ Doubtnut
 #### pdf_user
 
 ```
-concepts_schema = {
+pdf_user_schema = {
 
     'user_id': {
         'type': 'integer',
@@ -66,7 +66,7 @@ concepts_schema = {
     },
 
     'doubt_id': {
-        'type': 'sinteger',
+        'type': 'integer',
         'required': True,
     },
 
@@ -93,14 +93,79 @@ concepts_schema = {
     },
 }
 ```
+#### pdf_record
 
+```
+pdf_record_schema = {
+
+    'doubt_id': {
+        'type': 'integer',
+        'required': True,
+    },
+
+    'S3_link': {
+        'type': 'string',
+        'required': True,
+    },
+
+    'timestamp': {
+        'type': 'datetime',
+        'required': True,
+    },
+
+    'document_references': {
+        'type': 'list',
+        'schema': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'pdf_record',
+                'field': '_id',
+                'embeddable': True,
+            },
+        },
+    },
+}
+```
+#### user_asked_question
+
+```
+user_asked_question_schema = {
+
+    'user_id': {
+        'type': 'integer',
+        'required': True,
+    },
+
+    'question': {
+        'type': 'string',
+        'required': True,
+    },
+
+    'timestamp': {
+        'type': 'datetime',
+        'required': True,
+    },
+
+    'document_references': {
+        'type': 'list',
+        'schema': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'user_asked_question_schema',
+                'field': '_id',
+                'embeddable': True,
+            },
+        },
+    },
+}
+```
 
 ##  Logic and Assumptions
 
 1. **When a user asks a question**
      an entry is created in user_asked_question collection with following:
     - user_id
-    - doubt_id
+    - doubt_id - id of user_asked_question collection
     - doubt_body
 
 2. **Results are generated**
