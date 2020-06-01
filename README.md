@@ -204,7 +204,7 @@ user_asked_question_schema = {
 ```json
  application/json - [{"class":11,"question_text":"What is photosynthesis?","solution_text":"The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."}]
 ```
-### `response`
+##### `response`
 
 ```json
 status- 200 OK
@@ -215,9 +215,9 @@ status- 200 OK
     "solution_text": "The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."
   },
   {
-    "class": 11,
-    "question_text": "What is photosynthesis?",
-    "solution_text": "The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."
+    "class": 5,
+    "question_text": "Why is photosynthesis important?",
+    "solution_text": "Photosynthesis is important to living organisms because it is the number one source of oxygen in the atmosphere.Green plants and trees use photosynthesis to make food from sunlight, carbon dioxide and water in the atmosphere: It is their primary source of energy."
   }
 ]
 ```
