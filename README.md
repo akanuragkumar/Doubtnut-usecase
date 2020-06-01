@@ -204,8 +204,23 @@ user_asked_question_schema = {
 ```json
  application/json - [{"class":11,"question_text":"What is photosynthesis?","solution_text":"The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."}]
 ```
+### `response`
 
-
+```json
+status- 200 OK
+ [
+  {
+    "class": 11,
+    "question_text": "What is photosynthesis?",
+    "solution_text": "The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."
+  },
+  {
+    "class": 11,
+    "question_text": "What is photosynthesis?",
+    "solution_text": "The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."
+  }
+]
+```
 
 
 
