@@ -34,26 +34,26 @@ Doubtnut
 
 ##  Logic and Assumptions
 
-1. **User asks a question**
-    When a user asks a question an entry is created in user_asked_question table with following:
+1. **When a user asks a question**
+     an entry is created in user_asked_question table with following:
     - user_id
     - doubt_id
     - doubt_body
 
 2. **Results are generated**
-    Based on this, a set of results is generated from the catalog_questions table and shown to the user as a list and             following things are passed as parameters in generated list's xpath:      
+    from the catalog_questions table and shown to the user as a list and following things are passed as parameters in               generated list's xpath:        
     - user_id
     - doubt_id
     
 3. **When user clicks on any video, API is called**
-    When a student views a video from the above list, an API is called.That API has following components:
+    That API has following components:
     - it accepts user_id, doubt_id from parameters
     - it accepts question JSON
     - then it querries in pdf_user table and checks if the user_id already exists in table or not
     - if user_id exists then it updates doubt_id, question_json, timestamp
     - else it inserts the new entry with user_id, doubt_id, question_json, timestamp
- 2. **Cronjob scheduling**
-    Now we schedule a cronjob which works every 1 minute and logs in a file for which we do the following:      
+ 4. **Now we schedule a cronjob**
+    which works every 1 minute and logs in a file for which we do the following:      
     - We take list of entries in pdf_user made between (current time - 5minutes) and (current time - 10 minutes).
     - We get list of user_ids and doubts ids whose entries where made in that time frame.
     - Now we querry again with those user ids in between current time and (current time - 5minutes).
