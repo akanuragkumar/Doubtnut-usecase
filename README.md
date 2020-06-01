@@ -41,7 +41,7 @@ Create database pdf_record
 
 ### Backend 
 ```shell
-Hiring_assignment
+hiring_assignment
 ├── app                                # contains application files
 │   ├── task──────┐                    # contains resource files for API
 │   └── runserver │                    # serves API and manages the requests
