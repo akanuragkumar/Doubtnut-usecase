@@ -13,6 +13,41 @@ Create database pdf_user
 Create database pdf_record
 
 ```
+## Quickstart
+
+To work in a sandboxed Python environment we recommend installing the app in a Python [virtualenv](https://pypi.python.org/pypi/virtualenv).
+
+1. Install dependencies
+
+    ```bash
+    $ cd /path/to/doubnut
+    $ pip install -r requirements.txt
+    ```
+
+1. Setup a Mongo database 
+
+  ```Mongodb
+Create database pdf_user
+
+Create database pdf_record
+
+```
+
+
+1. Run server
+
+   ```bash
+   $ python app.runser.py
+   ```
+
+   View at http://127.0.0.1:5000
+   
+1. Cron-job Scheduling
+
+   ```bash
+   $ crontab -e
+     */1 * * * * /usr/bin/python desktop/Doubtnut/cronjob/session_inactivity.py >> log.txt
+   ```   
 
 ## Project Structure
 
@@ -70,37 +105,13 @@ Doubtnut
 
 ### `upload` 
 
-1. `POST /?user_id=user_id&doubt_id=doubt_id` 
+1. `POST /upload?user_id=user_id&doubt_id=doubt_id` 
 
 ```json
  application/json - [{"class":11,"question_text":"What is photosynthesis?","solution_text":"The process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a by-product."}]
 ```
 
-2. `GET /users/{userid}`
 
-Get an user with a given user id
-
-3. `GET /users/{username}`
-
-Get an user with a given username
-
-
-### `posts` 
-
-1. `GET /posts` 
-
-Get all posts by everyone 
-
-2. `POST /posts` 
-
-Create a new post. 
-Required fields in body - 
-
-```
-userId=
-title=
-body=
-```
 
 
 
