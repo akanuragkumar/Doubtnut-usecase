@@ -1,4 +1,4 @@
-# doubtnut_assignment
+# Hiring_assignment
 
 
 ## Quickstart
@@ -34,7 +34,7 @@ Create database pdf_record
 
    ```bash
    $ crontab -e
-     */1 * * * * /usr/bin/python desktop/Doubtnut/cronjob/session_inactivity.py >> log.txt
+     */1 * * * * /usr/bin/python desktop/hiring_assignment/cronjob/session_inactivity.py >> log.txt
    ```   
 
 ## Project Structure
