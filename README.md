@@ -168,7 +168,7 @@ user_asked_question_schema = {
 1. **When a user asks a question**
      an entry is created in user_asked_question collection with following:
     - user_id
-    - doubt_id - id of user_asked_question collection
+    - doubt_id - UUID
     - doubt_body
 
 2. **Results are generated**
