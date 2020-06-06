@@ -16,9 +16,11 @@ To work in a sandboxed Python environment it is recommended to install the app i
 1. Setup a Mongo database 
 
   ```Mongodb
-Create database pdf_user
+Create database pdf
 
-Create database pdf_record
+Create collection pdf_user
+
+Create collection pdf_record
 
 ```
 
