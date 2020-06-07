@@ -2,6 +2,8 @@
 
 ## [Link for generated pdf](https://github.com/akanuragkumar/hiring_assignment/blob/master/8a46cdd1-c81a-4e6b-880c-9cb8f4bca9c9.pdf)
 
+## [Link for generated mail](https://github.com/akanuragkumar/hiring_assignment/blob/master/mailer.png)
+
 ## Quickstart
 
 To work in a sandboxed Python environment it is recommended to install the app in a Python [virtualenv](https://pypi.python.org/pypi/virtualenv).
