@@ -46,7 +46,7 @@ Create collection pdf_record
 
 ### Backend 
 ```shell
-hiring_assignment
+assignment
 ├── app                                # contains application files
 │   ├── task──────┐                    # contains resource files for API
 │   └── runserver │                    # serves API and manages the requests
