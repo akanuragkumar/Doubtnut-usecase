@@ -11,7 +11,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 1. Install dependencies
 
     ```bash
-    $ cd /path/to/hiring_assignment
+    $ cd /path/to/Doubtnut-usecase
     $ pip install -r requirements.txt
     ```
 
